@@ -53,6 +53,13 @@ class _SavedStrainsState extends State<SavedStrains> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    subscription?.cancel();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,designSize: Size(720, 1520), allowFontScaling: false);
     return Scaffold(
@@ -109,7 +116,7 @@ class _SavedStrainsState extends State<SavedStrains> {
                         ),
                       );
                     },
-                  ):Center(child: CircularProgressIndicator(),),
+                  ):Center(child: CustomText(text: 'No Saved Strains!',size: ScreenUtil().setSp(40),),),
                 ),
               ),
             ),

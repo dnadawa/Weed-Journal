@@ -27,19 +27,19 @@ class _AllStrainsState extends State<AllStrains> {
     });
   }
 
-  getSearchResults(String x) async {
-    if(x==''){
-      getStrains();
-    }
-    else {
-      subscription = FirebaseFirestore.instance.collection('strains').where(
-          'name', isEqualTo: x).snapshots().listen((datasnapshot) {
-        setState(() {
-          strains = datasnapshot.docs;
-        });
-      });
-    }
-  }
+  // getSearchResults(String x) async {
+  //   if(x==''){
+  //     getStrains();
+  //   }
+  //   else {
+  //     subscription = FirebaseFirestore.instance.collection('strains').where(
+  //         'name', isEqualTo: x).snapshots().listen((datasnapshot) {
+  //       setState(() {
+  //         strains = datasnapshot.docs;
+  //       });
+  //     });
+  //   }
+  // }
 
 @override
   void initState() {
@@ -49,38 +49,45 @@ class _AllStrainsState extends State<AllStrains> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    subscription?.cancel();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,designSize: Size(720, 1520), allowFontScaling: false);
     return Scaffold(
       body: Column(
         children: [
-          Padding(
-            padding:  EdgeInsets.fromLTRB(ScreenUtil().setWidth(30),ScreenUtil().setWidth(30),ScreenUtil().setWidth(30),0),
-            child: TextField(
-              style: TextStyle(color: Colors.black,fontSize: ScreenUtil().setSp(30),fontWeight: FontWeight.bold),
-              decoration: InputDecoration(
-                hintStyle: TextStyle(color: Colors.black,fontSize: ScreenUtil().setSp(30),fontWeight: FontWeight.bold),
-                hintText: 'Search',
-                prefixIcon: Icon(Icons.search),
-                suffixIcon: GestureDetector(onTap: ()=> getStrains(),child: Icon(Icons.clear)),
-                contentPadding: EdgeInsets.all(15),
-                filled: true,
-                fillColor: Theme.of(context).accentColor,
-                enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(40),
-                    borderSide: BorderSide(width: 0,color: Theme.of(context).accentColor)
-                ),
-                focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(40),
-                    borderSide: BorderSide(width: 0,color: Theme.of(context).accentColor)
-                ),
-              ),
-              onSubmitted: (x){
-                print(x);
-                getSearchResults(x);
-              },
-            ),
-          ),
+          // Padding(
+          //   padding:  EdgeInsets.fromLTRB(ScreenUtil().setWidth(30),ScreenUtil().setWidth(30),ScreenUtil().setWidth(30),0),
+          //   child: TextField(
+          //     style: TextStyle(color: Colors.black,fontSize: ScreenUtil().setSp(30),fontWeight: FontWeight.bold),
+          //     decoration: InputDecoration(
+          //       hintStyle: TextStyle(color: Colors.black,fontSize: ScreenUtil().setSp(30),fontWeight: FontWeight.bold),
+          //       hintText: 'Search',
+          //       prefixIcon: Icon(Icons.search),
+          //       suffixIcon: GestureDetector(onTap: ()=> getStrains(),child: Icon(Icons.clear)),
+          //       contentPadding: EdgeInsets.all(15),
+          //       filled: true,
+          //       fillColor: Theme.of(context).accentColor,
+          //       enabledBorder: OutlineInputBorder(
+          //           borderRadius: BorderRadius.circular(40),
+          //           borderSide: BorderSide(width: 0,color: Theme.of(context).accentColor)
+          //       ),
+          //       focusedBorder: OutlineInputBorder(
+          //           borderRadius: BorderRadius.circular(40),
+          //           borderSide: BorderSide(width: 0,color: Theme.of(context).accentColor)
+          //       ),
+          //     ),
+          //     onSubmitted: (x){
+          //       print(x);
+          //       getSearchResults(x);
+          //     },
+          //   ),
+          // ),
           Expanded(
             child: Padding(
               padding:  EdgeInsets.all(ScreenUtil().setWidth(30)),
@@ -132,7 +139,7 @@ class _AllStrainsState extends State<AllStrains> {
                         ),
                       );
                     },
-                  ):Center(child: CircularProgressIndicator(),),
+                  ):Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),),),
                 ),
               ),
             ),

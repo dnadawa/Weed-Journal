@@ -32,6 +32,13 @@ class _NotesState extends State<Notes> {
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    subscription?.cancel();
+  }
+
+  @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context,designSize: Size(720, 1520), allowFontScaling: false);
     return Scaffold(
