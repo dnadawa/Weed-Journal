@@ -83,6 +83,9 @@ class _SavedStrainsState extends State<SavedStrains> {
                       String condition = strains[i]['conditions'];
                       String genetics = strains[i]['genetics'];
                       String info = strains[i]['info'];
+                      String symptoms = strains[i]['symptoms'];
+                      String effects = strains[i]['effects'];
+                      String flavors = strains[i]['flavors'];
                       List saved = strains[i]['saved'];
 
                       return Padding(
@@ -102,6 +105,9 @@ class _SavedStrainsState extends State<SavedStrains> {
                                   conditions: condition,
                                   genetics: genetics,
                                   info: info,
+                                  effects: effects,
+                                  flavors: flavors,
+                                  symptoms: symptoms,
                                   saved: saved,
                                 )),
                               );

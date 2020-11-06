@@ -23,6 +23,9 @@ class _AddStrainState extends State<AddStrain> {
   TextEditingController information = TextEditingController();
   TextEditingController genetics = TextEditingController();
   TextEditingController conditions = TextEditingController();
+  TextEditingController symptoms = TextEditingController();
+  TextEditingController effects = TextEditingController();
+  TextEditingController flavors = TextEditingController();
 
 
   @override
@@ -66,6 +69,18 @@ class _AddStrainState extends State<AddStrain> {
               child: InputField(hint: 'Conditions',controller: conditions,),
             ),
             Padding(
+              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(50)),
+              child: InputField(hint: 'Symptoms',controller: symptoms,),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(50)),
+              child: InputField(hint: 'Potential Effects',controller: effects,),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: ScreenUtil().setWidth(50)),
+              child: InputField(hint: 'Flavors',controller: flavors,),
+            ),
+            Padding(
               padding:  EdgeInsets.all(ScreenUtil().setWidth(90)),
               child: Button(color: Theme.of(context).accentColor,text: 'Add',onclick: () async {
                 if(image!=null){
@@ -82,6 +97,9 @@ class _AddStrainState extends State<AddStrain> {
                       'info': information.text,
                       'genetics': genetics.text,
                       'conditions': conditions.text,
+                      'symptoms': symptoms.text,
+                      'effects': effects.text,
+                      'flavors': flavors.text,
                       'image': downloadURL,
                       'saved': []
                     });
@@ -90,6 +108,9 @@ class _AddStrainState extends State<AddStrain> {
                     information.clear();
                     genetics.clear();
                     conditions.clear();
+                    flavors.clear();
+                    effects.clear();
+                    symptoms.clear();
                     image = null;
                     setState(() {});
 
