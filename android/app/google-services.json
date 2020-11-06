@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "434361908871",
+    "firebase_url": "https://weed-journal.firebaseio.com",
+    "project_id": "weed-journal",
+    "storage_bucket": "weed-journal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434361908871:android:a29479826676a7d7998222",
+        "android_client_info": {
+          "package_name": "com.digiwrecks.weed_journal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434361908871-p0g7tpu61e17nojdtrvfmjp1mh05b0ra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpvpZKJOX_HCW3wp7tQbdBRGVsmUPI15I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434361908871-p0g7tpu61e17nojdtrvfmjp1mh05b0ra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
